@@ -644,10 +644,222 @@
 }
 
 /* ===========================================
+   Statistics Section (Homepage)
+   =========================================== */
+
+.stats-section {
+  background: var(--deep);
+  color: white;
+  padding: 4rem 0;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  text-align: center;
+}
+
+.stat-item {
+  padding: 1rem;
+}
+
+.stat-number {
+  display: block;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  color: var(--warm);
+  line-height: 1.1;
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.9rem;
+  opacity: 0.85;
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ===========================================
+   Testimonials Carousel (Homepage)
+   =========================================== */
+
+.testimonials-section {
+  padding: 5rem 0;
+  background: var(--sand);
+  text-align: center;
+}
+
+.testimonials-section h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: var(--deep);
+  margin-bottom: 2.5rem;
+}
+
+.testimonials-carousel {
+  position: relative;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  min-height: 140px;
+}
+
+.testimonial-slide {
+  display: none;
+  animation: fadeSlide 0.4s ease;
+}
+
+.testimonial-slide.active {
+  display: block;
+}
+
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.testimonial-slide blockquote {
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--text);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.testimonial-slide cite {
+  font-style: normal;
+  color: var(--stone);
+  font-weight: 600;
+}
+
+.testimonials-nav {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.testimonial-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid var(--warm);
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: background var(--transition);
+}
+
+.testimonial-dot.active {
+  background: var(--warm);
+}
+
+.testimonial-dot:focus-visible {
+  outline: 3px solid rgba(196, 69, 43, 0.5);
+  outline-offset: 2px;
+}
+
+/* ===========================================
+   Why Choose Section (Homepage)
+   =========================================== */
+
+.why-choose-section {
+  padding: 5rem 0;
+}
+
+.why-choose-section h2 {
+  text-align: center;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: var(--deep);
+  margin-bottom: 2.5rem;
+}
+
+.why-choose-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+}
+
+.why-choose-item {
+  background: white;
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 15px var(--shadow);
+  text-align: center;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.why-choose-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.why-icon {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.why-choose-item h3 {
+  color: var(--deep);
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.why-choose-item p {
+  color: var(--stone);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* ===========================================
+   Tour Filters
+   =========================================== */
+
+.tour-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.5rem 0;
+}
+
+.filter-btn {
+  padding: 0.5rem 1.25rem;
+  border: 2px solid var(--deep);
+  border-radius: 30px;
+  background: transparent;
+  color: var(--deep);
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition);
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background: var(--deep);
+  color: white;
+}
+
+.filter-btn:focus-visible {
+  outline: 3px solid rgba(15, 44, 61, 0.4);
+  outline-offset: 2px;
+}
+
+.tour-card.hidden {
+  display: none;
+}
+
+/* ===========================================
    Responsive
    =========================================== */
 
 @media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
   .contact-grid {
     grid-template-columns: 1fr;
   }

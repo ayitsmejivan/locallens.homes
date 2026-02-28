@@ -10,6 +10,7 @@
     <title>Our Tours – LocalLens.Homes</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="pages.css">
+    <link rel="stylesheet" href="enhancements.css">
     <script>
       (function () {
         if (localStorage.getItem('darkMode') === 'enabled') {
@@ -72,55 +73,337 @@
             </div>
 
             <div class="tour-grid" aria-label="Available tours">
-                <article class="tour-card fade-in" data-difficulty="easy" data-duration="short">
+                <article class="tour-card fade-in" data-difficulty="easy" data-duration="short" data-tour-id="cultural-kathmandu" data-base-price="600">
+                    <div class="tour-card-header">
+                        <span class="tour-tag tour-tag--easy">Easy</span>
+                        <span class="tour-tag tour-tag--short">3–4 Days</span>
+                    </div>
                     <h2>Cultural Kathmandu</h2>
-                    <p class="tour-meta">3–4 days · Easy · $600–900</p>
+                    <p class="tour-meta">3–4 days · Easy · <strong>$600–900</strong></p>
                     <p>I've guided this 100+ times. I know when crowds hit and where to hide.</p>
-                    <a href="contact.html" class="btn">Book This Tour</a>
+                    <div class="tour-card-highlights">
+                        <span>🏛️ Temples &amp; Durbar Squares</span>
+                        <span>🍜 Local Food Tours</span>
+                        <span>🎭 Cultural Performances</span>
+                    </div>
+                    <div class="tour-card-actions">
+                        <button class="btn btn-itinerary" data-tour="cultural-kathmandu" aria-label="View itinerary for Cultural Kathmandu">📋 View Itinerary</button>
+                        <a href="contact.html" class="btn">Book Tour</a>
+                    </div>
                 </article>
 
-                <article class="tour-card fade-in" data-difficulty="moderate" data-duration="short">
+                <article class="tour-card fade-in" data-difficulty="moderate" data-duration="short" data-tour-id="pokhara-nagarkot" data-base-price="900">
+                    <div class="tour-card-header">
+                        <span class="tour-tag tour-tag--moderate">Moderate</span>
+                        <span class="tour-tag tour-tag--short">5–7 Days</span>
+                    </div>
                     <h2>Pokhara &amp; Nagarkot</h2>
-                    <p class="tour-meta">5–7 days · Easy–Moderate · $900–1,500</p>
+                    <p class="tour-meta">5–7 days · Easy–Moderate · <strong>$900–1,500</strong></p>
                     <p>I've handled flight cancellations here 20+ times. You won't even notice.</p>
-                    <a href="contact.html" class="btn">Book This Tour</a>
+                    <div class="tour-card-highlights">
+                        <span>🏔️ Himalayan Views</span>
+                        <span>🚣 Phewa Lake Boating</span>
+                        <span>🌅 Sunrise at Nagarkot</span>
+                    </div>
+                    <div class="tour-card-actions">
+                        <button class="btn btn-itinerary" data-tour="pokhara-nagarkot" aria-label="View itinerary for Pokhara & Nagarkot">📋 View Itinerary</button>
+                        <a href="contact.html" class="btn">Book Tour</a>
+                    </div>
                 </article>
 
-                <article class="tour-card fade-in" data-difficulty="moderate" data-duration="long">
+                <article class="tour-card fade-in" data-difficulty="moderate" data-duration="long" data-tour-id="classic-nepal" data-base-price="1500">
+                    <div class="tour-card-header">
+                        <span class="tour-tag tour-tag--moderate">Moderate</span>
+                        <span class="tour-tag tour-tag--long">10–12 Days</span>
+                    </div>
                     <h2>Classic Nepal</h2>
-                    <p class="tour-meta">10–12 days · Easy–Moderate · $1,500–2,500</p>
+                    <p class="tour-meta">10–12 days · Easy–Moderate · <strong>$1,500–2,500</strong></p>
                     <p>Kathmandu + Pokhara + Chitwan. The complete introduction.</p>
-                    <a href="contact.html" class="btn">Book This Tour</a>
+                    <div class="tour-card-highlights">
+                        <span>🦏 Chitwan Safari</span>
+                        <span>⛵ Lakeside Pokhara</span>
+                        <span>🕌 Heritage Sites</span>
+                    </div>
+                    <div class="tour-card-actions">
+                        <button class="btn btn-itinerary" data-tour="classic-nepal" aria-label="View itinerary for Classic Nepal">📋 View Itinerary</button>
+                        <a href="contact.html" class="btn">Book Tour</a>
+                    </div>
                 </article>
 
-                <article class="tour-card fade-in" data-difficulty="moderate" data-duration="short">
+                <article class="tour-card fade-in" data-difficulty="moderate" data-duration="short" data-tour-id="poon-hill" data-base-price="800">
+                    <div class="tour-card-header">
+                        <span class="tour-tag tour-tag--moderate">Moderate</span>
+                        <span class="tour-tag tour-tag--short">7–9 Days</span>
+                    </div>
                     <h2>Poon Hill Trek</h2>
-                    <p class="tour-meta">7–9 days · Moderate · $800–1,200</p>
+                    <p class="tour-meta">7–9 days · Moderate · <strong>$800–1,200</strong></p>
                     <p>Your first Himalayan trek. I've done this 50+ times.</p>
-                    <a href="contact.html" class="btn">Book This Tour</a>
+                    <div class="tour-card-highlights">
+                        <span>🏕️ Trek Camps</span>
+                        <span>🌄 Himalayan Panorama</span>
+                        <span>🏘️ Village Homestays</span>
+                    </div>
+                    <div class="tour-card-actions">
+                        <button class="btn btn-itinerary" data-tour="poon-hill" aria-label="View itinerary for Poon Hill Trek">📋 View Itinerary</button>
+                        <a href="contact.html" class="btn">Book Tour</a>
+                    </div>
                 </article>
 
-                <article class="tour-card featured fade-in" aria-label="Featured tour: Honey Hunting Expedition" data-difficulty="moderate" data-duration="short">
+                <article class="tour-card featured fade-in" aria-label="Featured tour: Honey Hunting Expedition" data-difficulty="moderate" data-duration="short" data-tour-id="honey-hunting" data-base-price="1200">
+                    <div class="tour-card-header">
+                        <span class="tour-tag tour-tag--featured">⭐ Featured</span>
+                        <span class="tour-tag tour-tag--short">5–7 Days</span>
+                    </div>
                     <h2>🔥 Honey Hunting</h2>
-                    <p class="tour-meta">5–7 days · Moderate · $1,200–2,000</p>
+                    <p class="tour-meta">5–7 days · Moderate · <strong>$1,200–2,000</strong></p>
                     <p><strong>ONLY 6 SPOTS PER YEAR.</strong> Most Nepalis never see this.</p>
-                    <a href="honey-hunting.html" class="btn">View Tour</a>
+                    <div class="tour-card-highlights">
+                        <span>🍯 Wild Honey Harvest</span>
+                        <span>🧗 Cliff Climbing</span>
+                        <span>🌿 Gurung Culture</span>
+                    </div>
+                    <div class="tour-card-actions">
+                        <button class="btn btn-itinerary" data-tour="honey-hunting" aria-label="View itinerary for Honey Hunting Expedition">📋 View Itinerary</button>
+                        <a href="honey-hunting.html" class="btn">View Tour</a>
+                    </div>
                 </article>
 
-                <article class="tour-card fade-in" data-difficulty="moderate" data-duration="long">
+                <article class="tour-card fade-in" data-difficulty="moderate" data-duration="long" data-tour-id="muktinath" data-base-price="1200">
+                    <div class="tour-card-header">
+                        <span class="tour-tag tour-tag--moderate">Moderate</span>
+                        <span class="tour-tag tour-tag--long">10–12 Days</span>
+                    </div>
                     <h2>Muktinath Pilgrimage</h2>
-                    <p class="tour-meta">10–12 days · Moderate · $1,200–1,800</p>
+                    <p class="tour-meta">10–12 days · Moderate · <strong>$1,200–1,800</strong></p>
                     <p>I'll get you there – even when flights cancel.</p>
-                    <a href="contact.html" class="btn">Book This Tour</a>
+                    <div class="tour-card-highlights">
+                        <span>🛕 Sacred Temple</span>
+                        <span>✈️ Mountain Flights</span>
+                        <span>🏜️ Mustang Desert</span>
+                    </div>
+                    <div class="tour-card-actions">
+                        <button class="btn btn-itinerary" data-tour="muktinath" aria-label="View itinerary for Muktinath Pilgrimage">📋 View Itinerary</button>
+                        <a href="contact.html" class="btn">Book Tour</a>
+                    </div>
                 </article>
 
-                <article class="tour-card fade-in" data-difficulty="moderate" data-duration="long">
+                <article class="tour-card fade-in" data-difficulty="moderate" data-duration="long" data-tour-id="grand-nepal" data-base-price="2500">
+                    <div class="tour-card-header">
+                        <span class="tour-tag tour-tag--moderate">Moderate</span>
+                        <span class="tour-tag tour-tag--long">14–16 Days</span>
+                    </div>
                     <h2>Grand Tour Nepal</h2>
-                    <p class="tour-meta">14–16 days · Moderate · $2,500–4,000</p>
+                    <p class="tour-meta">14–16 days · Moderate · <strong>$2,500–4,000</strong></p>
                     <p>Kathmandu + Pokhara + Muktinath + Lumbini + Chitwan.</p>
-                    <a href="contact.html" class="btn">Book This Tour</a>
+                    <div class="tour-card-highlights">
+                        <span>🌍 5 Destinations</span>
+                        <span>🕊️ Lumbini Birthplace</span>
+                        <span>🦁 Wildlife Safaris</span>
+                    </div>
+                    <div class="tour-card-actions">
+                        <button class="btn btn-itinerary" data-tour="grand-nepal" aria-label="View itinerary for Grand Tour Nepal">📋 View Itinerary</button>
+                        <a href="contact.html" class="btn">Book Tour</a>
+                    </div>
                 </article>
             </div>
+
+            <!-- ============================================================
+                 HOTEL SELECTION SECTION
+                 ============================================================ -->
+            <section class="hotel-section fade-in" aria-labelledby="hotel-section-title">
+                <h2 id="hotel-section-title" class="section-title">🏨 Choose Your Hotel Category</h2>
+                <p class="section-subtitle">All hotels personally vetted by Jivan. Prices shown are per night per room.</p>
+                <div class="hotel-grid">
+                    <div class="hotel-card" data-stars="3" data-hotel-price="40" role="button" tabindex="0" aria-pressed="false">
+                        <div class="hotel-stars">⭐⭐⭐</div>
+                        <h3>3-Star Comfort</h3>
+                        <p class="hotel-price">From <strong>$40</strong>/night</p>
+                        <ul class="hotel-amenities">
+                            <li>✓ En-suite bathroom</li>
+                            <li>✓ Free Wi-Fi</li>
+                            <li>✓ Daily breakfast</li>
+                            <li>✓ 24-hr hot water</li>
+                            <li>✓ Central location</li>
+                        </ul>
+                        <p class="hotel-example">e.g. Hotel Manaslu, Hotel Shanker</p>
+                        <button class="btn btn-select-hotel" data-stars="3">Select 3-Star</button>
+                    </div>
+
+                    <div class="hotel-card hotel-card--popular" data-stars="4" data-hotel-price="90" role="button" tabindex="0" aria-pressed="false">
+                        <div class="hotel-popular-badge">Most Popular</div>
+                        <div class="hotel-stars">⭐⭐⭐⭐</div>
+                        <h3>4-Star Superior</h3>
+                        <p class="hotel-price">From <strong>$90</strong>/night</p>
+                        <ul class="hotel-amenities">
+                            <li>✓ Deluxe rooms &amp; suites</li>
+                            <li>✓ Swimming pool</li>
+                            <li>✓ In-house restaurant</li>
+                            <li>✓ Airport transfers</li>
+                            <li>✓ Concierge service</li>
+                        </ul>
+                        <p class="hotel-example">e.g. Hyatt Regency, Hotel Yak &amp; Yeti</p>
+                        <button class="btn btn-select-hotel" data-stars="4">Select 4-Star</button>
+                    </div>
+
+                    <div class="hotel-card" data-stars="5" data-hotel-price="180" role="button" tabindex="0" aria-pressed="false">
+                        <div class="hotel-stars">⭐⭐⭐⭐⭐</div>
+                        <h3>5-Star Luxury</h3>
+                        <p class="hotel-price">From <strong>$180</strong>/night</p>
+                        <ul class="hotel-amenities">
+                            <li>✓ Luxury suites &amp; spa</li>
+                            <li>✓ Fine dining restaurant</li>
+                            <li>✓ Personal butler</li>
+                            <li>✓ Exclusive experiences</li>
+                            <li>✓ Helicopter transfers</li>
+                        </ul>
+                        <p class="hotel-example">e.g. Dwarika's Hotel, Taj Hotel</p>
+                        <button class="btn btn-select-hotel" data-stars="5">Select 5-Star</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============================================================
+                 VEHICLE SELECTION SECTION
+                 ============================================================ -->
+            <section class="vehicle-section fade-in" aria-labelledby="vehicle-section-title">
+                <h2 id="vehicle-section-title" class="section-title">🚗 Choose Your Vehicle</h2>
+                <p class="section-subtitle">All vehicles are private, air-conditioned, and come with an experienced local driver.</p>
+                <div class="vehicle-grid">
+                    <div class="vehicle-card" data-vehicle="sedan" data-vehicle-price="50" role="button" tabindex="0" aria-pressed="false">
+                        <div class="vehicle-icon">🚗</div>
+                        <h3>Sedan</h3>
+                        <p class="vehicle-capacity">👥 Up to 3 passengers</p>
+                        <p class="vehicle-price">From <strong>$50</strong>/day</p>
+                        <ul class="vehicle-features">
+                            <li>A/C &amp; comfortable seats</li>
+                            <li>City &amp; highway roads</li>
+                            <li>Fuel-efficient</li>
+                            <li>Ideal for couples/solo</li>
+                        </ul>
+                        <button class="btn btn-select-vehicle" data-vehicle="sedan">Select Sedan</button>
+                    </div>
+
+                    <div class="vehicle-card" data-vehicle="suv" data-vehicle-price="80" role="button" tabindex="0" aria-pressed="false">
+                        <div class="vehicle-icon">🚙</div>
+                        <h3>SUV</h3>
+                        <p class="vehicle-capacity">👥 Up to 5 passengers</p>
+                        <p class="vehicle-price">From <strong>$80</strong>/day</p>
+                        <ul class="vehicle-features">
+                            <li>High ground clearance</li>
+                            <li>Mountain &amp; off-road capable</li>
+                            <li>Spacious boot</li>
+                            <li>Great for families</li>
+                        </ul>
+                        <button class="btn btn-select-vehicle" data-vehicle="suv">Select SUV</button>
+                    </div>
+
+                    <div class="vehicle-card vehicle-card--popular" data-vehicle="jeep" data-vehicle-price="100" role="button" tabindex="0" aria-pressed="false">
+                        <div class="vehicle-popular-badge">Best for Trekking</div>
+                        <div class="vehicle-icon">🛻</div>
+                        <h3>Jeep</h3>
+                        <p class="vehicle-capacity">👥 Up to 6 passengers</p>
+                        <p class="vehicle-price">From <strong>$100</strong>/day</p>
+                        <ul class="vehicle-features">
+                            <li>4WD off-road beast</li>
+                            <li>Rough mountain tracks</li>
+                            <li>Roof rack for gear</li>
+                            <li>Ideal for remote areas</li>
+                        </ul>
+                        <button class="btn btn-select-vehicle" data-vehicle="jeep">Select Jeep</button>
+                    </div>
+
+                    <div class="vehicle-card" data-vehicle="hiace" data-vehicle-price="120" role="button" tabindex="0" aria-pressed="false">
+                        <div class="vehicle-icon">🚐</div>
+                        <h3>Hiace Minibus</h3>
+                        <p class="vehicle-capacity">👥 Up to 12 passengers</p>
+                        <p class="vehicle-price">From <strong>$120</strong>/day</p>
+                        <ul class="vehicle-features">
+                            <li>Large group transport</li>
+                            <li>Luggage compartment</li>
+                            <li>Reclining seats</li>
+                            <li>Groups &amp; families</li>
+                        </ul>
+                        <button class="btn btn-select-vehicle" data-vehicle="hiace">Select Hiace</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============================================================
+                 TOUR CUSTOMIZER SECTION
+                 ============================================================ -->
+            <section class="customizer-section fade-in" aria-labelledby="customizer-title">
+                <div class="customizer-header">
+                    <h2 id="customizer-title">✨ Build Your Custom Tour</h2>
+                    <p>Mix and match your perfect Nepal experience. Get an instant estimate.</p>
+                </div>
+                <form class="customizer-form" id="tour-customizer" novalidate>
+                    <div class="customizer-grid">
+                        <div class="customizer-field">
+                            <label for="cust-tour">Select Tour Package</label>
+                            <select id="cust-tour" name="tour" required>
+                                <option value="">-- Choose a tour --</option>
+                                <option value="cultural-kathmandu" data-days="3" data-price="600">Cultural Kathmandu (3–4 days) · from $600</option>
+                                <option value="pokhara-nagarkot" data-days="5" data-price="900">Pokhara &amp; Nagarkot (5–7 days) · from $900</option>
+                                <option value="classic-nepal" data-days="10" data-price="1500">Classic Nepal (10–12 days) · from $1,500</option>
+                                <option value="poon-hill" data-days="7" data-price="800">Poon Hill Trek (7–9 days) · from $800</option>
+                                <option value="honey-hunting" data-days="5" data-price="1200">Honey Hunting (5–7 days) · from $1,200</option>
+                                <option value="muktinath" data-days="10" data-price="1200">Muktinath Pilgrimage (10–12 days) · from $1,200</option>
+                                <option value="grand-nepal" data-days="14" data-price="2500">Grand Tour Nepal (14–16 days) · from $2,500</option>
+                            </select>
+                        </div>
+
+                        <div class="customizer-field">
+                            <label for="cust-people">Number of Travellers</label>
+                            <select id="cust-people" name="people">
+                                <option value="1">1 person (Solo)</option>
+                                <option value="2" selected>2 people (Couple)</option>
+                                <option value="3">3 people</option>
+                                <option value="4">4 people</option>
+                                <option value="5">5–6 people</option>
+                                <option value="7">7–12 people (Group)</option>
+                            </select>
+                        </div>
+
+                        <div class="customizer-field">
+                            <label for="cust-hotel">Hotel Category</label>
+                            <select id="cust-hotel" name="hotel">
+                                <option value="3" data-price="40">3-Star Comfort · +$40/night/room</option>
+                                <option value="4" data-price="90" selected>4-Star Superior · +$90/night/room</option>
+                                <option value="5" data-price="180">5-Star Luxury · +$180/night/room</option>
+                            </select>
+                        </div>
+
+                        <div class="customizer-field">
+                            <label for="cust-vehicle">Vehicle Type</label>
+                            <select id="cust-vehicle" name="vehicle">
+                                <option value="sedan" data-price="50">Sedan (up to 3 pax) · +$50/day</option>
+                                <option value="suv" data-price="80" selected>SUV (up to 5 pax) · +$80/day</option>
+                                <option value="jeep" data-price="100">Jeep 4WD (up to 6 pax) · +$100/day</option>
+                                <option value="hiace" data-price="120">Hiace Minibus (up to 12 pax) · +$120/day</option>
+                            </select>
+                        </div>
+
+                        <div class="customizer-field">
+                            <label for="cust-date">Preferred Start Date</label>
+                            <input type="date" id="cust-date" name="date">
+                        </div>
+
+                        <div class="customizer-field">
+                            <label for="cust-extras">Special Requests</label>
+                            <input type="text" id="cust-extras" name="extras" placeholder="e.g. vegetarian meals, birthday surprise…">
+                        </div>
+                    </div>
+
+                    <div class="customizer-quote" id="customizer-quote" aria-live="polite">
+                        <div class="quote-placeholder">👆 Select your tour package above to see an instant estimate</div>
+                    </div>
+
+                    <div class="customizer-actions">
+                        <button type="button" class="btn btn-quote" id="btn-get-quote">💰 Get My Quote</button>
+                        <a href="contact.html" class="btn btn-dark" id="btn-book-custom">📩 Send to Jivan</a>
+                    </div>
+                </form>
+            </section>
 
             <div class="tours-cta">
                 <a href="contact.html" class="btn btn-dark" style="padding: 1rem 3rem;">Book a Consultation</a>
@@ -139,6 +422,24 @@
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
     </a>
 
+    <!-- Itinerary Modal -->
+    <div class="modal-overlay" id="itinerary-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2 id="modal-title" class="modal-title">Tour Itinerary</h2>
+                <button class="modal-close" id="modal-close" aria-label="Close itinerary">✕</button>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <!-- Dynamically populated by JS -->
+            </div>
+            <div class="modal-footer">
+                <a href="contact.html" class="btn">Book This Tour</a>
+                <button class="btn btn-dark modal-close-btn" id="modal-close-btn">Close</button>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
+    <script src="enhancements.js"></script>
 </body>
 </html>

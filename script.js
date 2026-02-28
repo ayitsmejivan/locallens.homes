@@ -7,6 +7,9 @@ document.addEventListener('DOMContentLoaded', function () {
   initLazyLoading();
   initFormValidation();
   setActiveNavLink();
+  initDarkMode();
+  initTestimonialsCarousel();
+  initTourFilters();
 });
 
 // ===========================================
@@ -230,5 +233,105 @@ function setActiveNavLink() {
     if (href === currentPage) {
       link.classList.add('active');
     }
+  });
+}
+
+// ===========================================
+// Dark Mode Toggle
+// ===========================================
+
+function initDarkMode() {
+  var toggle = document.getElementById('dark-mode-toggle');
+  if (!toggle) return;
+
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  toggle.textContent = isDark ? '☀️' : '🌙';
+  toggle.setAttribute('aria-pressed', String(isDark));
+
+  toggle.addEventListener('click', function () {
+    var currentlyDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if (currentlyDark) {
+      document.documentElement.removeAttribute('data-theme');
+      localStorage.removeItem('darkMode');
+      toggle.textContent = '🌙';
+      toggle.setAttribute('aria-pressed', 'false');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      localStorage.setItem('darkMode', 'enabled');
+      toggle.textContent = '☀️';
+      toggle.setAttribute('aria-pressed', 'true');
+    }
+  });
+}
+
+// ===========================================
+// Testimonials Carousel
+// ===========================================
+
+function initTestimonialsCarousel() {
+  var slides = document.querySelectorAll('.testimonial-slide');
+  var dots = document.querySelectorAll('.testimonial-dot');
+  if (!slides.length || !dots.length) return;
+
+  var current = 0;
+  var autoplay;
+
+  function showSlide(index) {
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = (index + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+  }
+
+  function startAutoplay() {
+    autoplay = setInterval(function () { showSlide(current + 1); }, 5000);
+  }
+
+  function resetAutoplay() {
+    clearInterval(autoplay);
+    startAutoplay();
+  }
+
+  dots.forEach(function (dot) {
+    dot.addEventListener('click', function () {
+      showSlide(parseInt(dot.getAttribute('data-index'), 10));
+      resetAutoplay();
+    });
+  });
+
+  startAutoplay();
+}
+
+// ===========================================
+// Tour Filters
+// ===========================================
+
+function initTourFilters() {
+  var filterBtns = document.querySelectorAll('.filter-btn');
+  var tourCards = document.querySelectorAll('.tour-card');
+  if (!filterBtns.length || !tourCards.length) return;
+
+  filterBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var filter = btn.getAttribute('data-filter');
+
+      filterBtns.forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+
+      tourCards.forEach(function (card) {
+        if (filter === 'all') {
+          card.classList.remove('hidden');
+        } else if (filter === 'easy') {
+          card.classList.toggle('hidden', card.getAttribute('data-difficulty') !== 'easy');
+        } else if (filter === 'moderate') {
+          card.classList.toggle('hidden', card.getAttribute('data-difficulty') !== 'moderate');
+        } else if (filter === 'short') {
+          card.classList.toggle('hidden', card.getAttribute('data-duration') !== 'short');
+        } else if (filter === 'long') {
+          card.classList.toggle('hidden', card.getAttribute('data-duration') !== 'long');
+        }
+      });
+    });
   });
 }

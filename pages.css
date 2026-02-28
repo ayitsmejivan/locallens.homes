@@ -1,0 +1,686 @@
+/* ===========================================
+   LocalLens.Homes – Page-Specific Styles
+   =========================================== */
+
+/* ===========================================
+   Homepage
+   =========================================== */
+
+.hero {
+  background: linear-gradient(rgba(15, 44, 61, 0.85), rgba(15, 44, 61, 0.9)),
+              url('images/f4dad9b5-9eac-4c18-9cc4-d94212c33d02.jpg');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 6rem 0;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  max-width: 800px;
+  margin: 0 auto 1.5rem;
+  line-height: 1.25;
+}
+
+.hero p {
+  font-size: 1.3rem;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  opacity: 0.9;
+}
+
+.hero-actions {
+  margin-top: 1rem;
+}
+
+.featured-section {
+  padding: 4rem 0;
+}
+
+.featured-section h2 {
+  text-align: center;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: 2rem;
+  color: var(--deep);
+}
+
+.featured-box {
+  background: var(--sand);
+  padding: 2.5rem;
+  border-radius: var(--radius-lg);
+  text-align: center;
+}
+
+.featured-box p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ===========================================
+   Tours Page
+   =========================================== */
+
+.tours-header {
+  padding: 3rem 0 1rem;
+}
+
+.tours-header h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--deep);
+  margin-bottom: 1rem;
+}
+
+.tours-header p {
+  font-size: 1.1rem;
+  color: var(--stone);
+  max-width: 700px;
+}
+
+.tour-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.tour-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: 0 5px 15px var(--shadow);
+  border-top: 4px solid var(--warm);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.tour-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.tour-card.featured {
+  border-top-color: gold;
+  position: relative;
+}
+
+.tour-card h3 {
+  font-size: 1.3rem;
+  color: var(--deep);
+  margin-bottom: 0.5rem;
+}
+
+.tour-meta {
+  color: var(--stone);
+  font-size: 0.9rem;
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+}
+
+.tour-card p {
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+
+.tours-cta {
+  text-align: center;
+  padding: 2rem 0 3rem;
+}
+
+/* ===========================================
+   Honey Hunting Page
+   =========================================== */
+
+.tour-header {
+  background: linear-gradient(rgba(15, 44, 61, 0.8), rgba(15, 44, 61, 0.9)),
+              url('images/f4dad9b5-9eac-4c18-9cc4-d94212c33d02.jpg');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 6rem 0;
+}
+
+.tour-header h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  max-width: 800px;
+  margin: 1rem 0;
+  line-height: 1.2;
+}
+
+.tour-header p {
+  font-size: 1.2rem;
+  max-width: 600px;
+  opacity: 0.9;
+}
+
+.badge {
+  background: var(--warm);
+  color: white;
+  padding: 0.3rem 1rem;
+  border-radius: 20px;
+  display: inline-block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.tour-quick-facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  background: white;
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  margin-top: -3rem;
+  position: relative;
+  z-index: 10;
+}
+
+.fact-item {
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.fact-label {
+  color: var(--stone);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: block;
+}
+
+.fact-value {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--deep);
+  margin-top: 0.25rem;
+  display: block;
+}
+
+.section-heading {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: var(--deep);
+  margin: 3rem 0 1.5rem;
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin: 3rem 0;
+}
+
+.photo-placeholder {
+  background: #d4dce2;
+  height: 200px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--stone);
+  font-size: 0.85rem;
+  text-align: center;
+  padding: 1rem;
+}
+
+.photo-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+}
+
+.day-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  border-left: 3px solid var(--warm);
+  transition: box-shadow var(--transition);
+}
+
+.day-card:hover {
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.day-title {
+  font-weight: 700;
+  color: var(--deep);
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.note-box {
+  background: var(--sand);
+  padding: 1rem;
+  border-radius: var(--radius);
+  margin-top: 1rem;
+}
+
+.inclusions-box {
+  background: var(--sand);
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  margin: 3rem 0;
+}
+
+.inclusions-box h3 {
+  margin-bottom: 1rem;
+  color: var(--deep);
+}
+
+.inclusions-box ul {
+  columns: 2;
+  list-style-position: inside;
+}
+
+.inclusions-box ul li {
+  margin-bottom: 0.5rem;
+}
+
+.inclusions-box .not-included {
+  margin-top: 1.5rem;
+}
+
+.cta-box {
+  background: var(--deep);
+  color: white;
+  padding: 3rem;
+  border-radius: var(--radius-lg);
+  text-align: center;
+  margin: 3rem 0;
+}
+
+.cta-box h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.cta-box p {
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
+  max-width: 550px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.testimonials {
+  margin: 4rem 0;
+}
+
+.testimonials h3 {
+  margin-bottom: 1.5rem;
+  font-size: 1.3rem;
+  color: var(--deep);
+}
+
+.testimonial-card {
+  background: white;
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.testimonial-card blockquote {
+  font-style: italic;
+  margin-bottom: 1rem;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.back-link {
+  text-align: center;
+  margin: 3rem 0;
+}
+
+.back-link a {
+  color: var(--warm);
+  text-decoration: none;
+  font-weight: 600;
+  transition: opacity var(--transition);
+}
+
+.back-link a:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+/* ===========================================
+   About Page
+   =========================================== */
+
+.about-header {
+  background: var(--deep);
+  color: white;
+  padding: 5rem 0;
+  text-align: center;
+}
+
+.about-header h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 1rem;
+}
+
+.about-header p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.story-block {
+  background: white;
+  padding: 3rem;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.07);
+  margin-top: -3rem;
+  position: relative;
+  z-index: 10;
+  margin-bottom: 2rem;
+}
+
+.story-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: #d4dce2;
+  margin: 0 auto 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 4px solid var(--warm);
+  overflow: hidden;
+  font-size: 0.9rem;
+  color: var(--stone);
+  text-align: center;
+  padding: 1rem;
+}
+
+.credentials {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+}
+
+.cred-badge {
+  background: var(--sand);
+  color: var(--deep);
+  padding: 0.5rem 1.5rem;
+  border-radius: 30px;
+  font-weight: 600;
+  border: 1px solid var(--warm);
+  font-size: 0.9rem;
+}
+
+.about-tagline {
+  font-size: 1.3rem;
+  text-align: center;
+  color: var(--deep);
+  margin-bottom: 2rem;
+}
+
+.about-text {
+  margin-bottom: 1.5rem;
+  font-size: 1.05rem;
+}
+
+.quote-box {
+  background: var(--deep);
+  color: white;
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  margin: 2rem 0;
+}
+
+.quote-box p {
+  font-size: 1.2rem;
+  font-style: italic;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.why-item {
+  background: var(--sand);
+  padding: 1.5rem;
+  border-radius: var(--radius-lg);
+}
+
+.cta-center {
+  text-align: center;
+  margin: 3rem 0;
+}
+
+/* ===========================================
+   Contact Page
+   =========================================== */
+
+.contact-header {
+  padding: 3rem 0 1rem;
+}
+
+.contact-header h1 {
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  color: var(--deep);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin: 2rem 0 3rem;
+}
+
+.emergency-card {
+  background: var(--warm);
+  color: white;
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+}
+
+.emergency-card h2 {
+  color: white;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.phone-big {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 1rem 0;
+}
+
+.emergency-card .response-note {
+  margin-top: 1.5rem;
+  font-style: italic;
+  opacity: 0.9;
+  font-size: 0.95rem;
+}
+
+.planning-card {
+  background: white;
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.planning-card h2 {
+  color: var(--deep);
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+}
+
+.planning-card .form-intro {
+  color: var(--stone);
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+
+/* Form Styles */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  color: var(--deep);
+  font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 2px solid #e0e0e0;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-family: inherit;
+  background: #fafafa;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--warm);
+  box-shadow: 0 0 0 3px rgba(196, 69, 43, 0.1);
+  background: white;
+}
+
+.form-group input.error,
+.form-group textarea.error {
+  border-color: #e74c3c;
+}
+
+.field-error {
+  color: #e74c3c;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+  display: none;
+}
+
+.field-error.visible {
+  display: block;
+}
+
+.btn-full {
+  width: 100%;
+  text-align: center;
+  padding: 1rem;
+  margin: 0;
+}
+
+.btn-loading {
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.form-success,
+.form-error-msg {
+  display: none;
+  padding: 1rem;
+  border-radius: var(--radius);
+  margin-top: 1rem;
+  text-align: center;
+  font-weight: 500;
+}
+
+.form-success {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.form-error-msg {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.form-success.visible,
+.form-error-msg.visible {
+  display: block;
+}
+
+.contact-info {
+  margin-top: 1.5rem;
+  color: var(--stone);
+  font-size: 0.95rem;
+  line-height: 2;
+}
+
+.what-happens {
+  background: var(--sand);
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  margin-bottom: 4rem;
+}
+
+.what-happens h3 {
+  margin-bottom: 1rem;
+  color: var(--deep);
+}
+
+.what-happens ul {
+  list-style: none;
+}
+
+.what-happens ul li {
+  margin-bottom: 0.5rem;
+}
+
+/* ===========================================
+   Responsive
+   =========================================== */
+
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .why-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .inclusions-box ul {
+    columns: 1;
+  }
+
+  .story-block {
+    padding: 1.5rem;
+    margin-top: -1.5rem;
+  }
+
+  .cta-box {
+    padding: 2rem 1.5rem;
+  }
+
+  .tour-quick-facts {
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 4rem 0;
+  }
+
+  .tour-quick-facts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

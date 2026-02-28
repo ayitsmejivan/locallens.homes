@@ -3,6 +3,7 @@
    =========================================================== */
 
 document.addEventListener('DOMContentLoaded', function () {
+  initEarlyBookingTracking();
   initTourItineraryModals();
   initHotelSelection();
   initVehicleSelection();
@@ -10,6 +11,35 @@ document.addEventListener('DOMContentLoaded', function () {
   syncSelectorsWithCustomizer();
   setMinDate();
 });
+
+// ===========================================
+// Early Booking Discount Tracking
+// ===========================================
+
+function initEarlyBookingTracking() {
+  // Record the first time the user visits the tours page
+  if (!localStorage.getItem('tourInquiryTime')) {
+    localStorage.setItem('tourInquiryTime', Date.now().toString());
+  }
+}
+
+function getInquiryTime() {
+  var stored = localStorage.getItem('tourInquiryTime');
+  return stored ? parseInt(stored, 10) : Date.now();
+}
+
+function isEarlyBooker() {
+  // Returns true if the user's first visit (inquiry time) was within the last 24 hours.
+  // Once 24 hours have elapsed from the stored timestamp, this correctly returns false.
+  var elapsed = Date.now() - getInquiryTime();
+  return elapsed < 24 * 60 * 60 * 1000;
+}
+
+function getHoursRemaining() {
+  var elapsed = Date.now() - getInquiryTime();
+  var remaining = (24 * 60 * 60 * 1000) - elapsed;
+  return Math.max(0, Math.ceil(remaining / (60 * 60 * 1000)));
+}
 
 // ===========================================
 // Tour Data
@@ -523,7 +553,7 @@ function initTourItineraryModals() {
 
       lastFocusedBtn = btn;
       modalTitle.textContent = tour.name + ' – Itinerary';
-      modalBody.innerHTML = buildItineraryHTML(tour);
+      modalBody.innerHTML = buildItineraryHTML(tour, isEarlyBooker());
       modal.removeAttribute('hidden');
       document.body.style.overflow = 'hidden';
 
@@ -570,8 +600,13 @@ function initTourItineraryModals() {
   });
 }
 
-function buildItineraryHTML(tour) {
+function buildItineraryHTML(tour, earlyBooker) {
   var html = '';
+
+  // Early booker banner
+  if (earlyBooker) {
+    html += '<div class="early-discount-badge">🎉 20% Early Booking Discount – Enhanced Itinerary</div>';
+  }
 
   // Meta info bar
   html += '<div class="itinerary-meta">';
@@ -583,16 +618,37 @@ function buildItineraryHTML(tour) {
   // Day-by-day
   html += '<h3 class="itinerary-section-title">Day-by-Day Itinerary</h3>';
   tour.days.forEach(function (day, i) {
-    html += '<div class="itinerary-day">';
+    html += '<div class="itinerary-day' + (earlyBooker ? ' itinerary-day--enhanced' : '') + '">';
     html += '<div class="itinerary-day-title">';
     html += '<span class="itinerary-day-number">Day ' + (i + 1) + '</span> ';
     html += escapeHTML(day.title);
     html += '</div>';
+
+    if (earlyBooker) {
+      // Enhanced view: show start time
+      var startTime = getDayStartTime(day);
+      html += '<div class="itinerary-day-time">⏰ Starting ' + startTime + '</div>';
+    }
+
     html += '<div class="itinerary-day-desc">' + escapeHTML(day.description) + '</div>';
+
+    if (earlyBooker && day.meals.length) {
+      // Detailed meal breakdown
+      var mealIcons = { 'Breakfast': '🍳', 'Lunch': '🥘', 'Dinner': '🍽️' };
+      html += '<div class="itinerary-meal-detail">';
+      html += '<strong>Meals included:</strong> ';
+      html += day.meals.map(function (m) {
+        return (mealIcons[m] || '🍴') + ' ' + escapeHTML(m);
+      }).join(' &nbsp;·&nbsp; ');
+      html += '</div>';
+    }
+
     html += '<div class="itinerary-day-pills">';
-    day.meals.forEach(function (m) {
-      html += '<span class="itinerary-pill pill-meal">' + escapeHTML(m) + '</span>';
-    });
+    if (!earlyBooker) {
+      day.meals.forEach(function (m) {
+        html += '<span class="itinerary-pill pill-meal">' + escapeHTML(m) + '</span>';
+      });
+    }
     day.activities.forEach(function (a) {
       html += '<span class="itinerary-pill pill-activity">' + escapeHTML(a) + '</span>';
     });
@@ -613,6 +669,17 @@ function buildItineraryHTML(tour) {
   html += '</div>';
 
   return html;
+}
+
+function getDayStartTime(day) {
+  // Returns an estimated start time based on day content (not actual schedule data).
+  var title = day.title.toLowerCase();
+  var activities = (day.activities || []).join(' ').toLowerCase();
+  if (title.indexOf('sunrise') !== -1 || activities.indexOf('sunrise') !== -1) return '5:00 AM';
+  if (title.indexOf('puja') !== -1 || title.indexOf('ritual') !== -1) return '5:30 AM';
+  if (title.indexOf('arrival') !== -1 || title.indexOf('departure') !== -1) return '9:00 AM';
+  if (title.indexOf('fly') !== -1 || activities.indexOf('flight') !== -1) return '7:00 AM';
+  return '8:30 AM';
 }
 
 function escapeHTML(str) {
@@ -778,11 +845,12 @@ function generateQuote() {
   var people = parseInt(peopleSelect.value, 10) || 2;
   var hotelOption = hotelSelect.options[hotelSelect.selectedIndex];
   var hotelPricePerNight = parseInt(hotelOption.getAttribute('data-price'), 10) || 0;
-  var hotelStars = hotelSelect.value;
+  var hotelStars = parseInt(hotelSelect.value, 10);
 
   var vehicleOption = vehicleSelect.options[vehicleSelect.selectedIndex];
   var vehiclePricePerDay = parseInt(vehicleOption.getAttribute('data-price'), 10) || 0;
   var vehicleName = vehicleSelect.value.charAt(0).toUpperCase() + vehicleSelect.value.slice(1);
+  var vehicleType = vehicleSelect.value;
 
   // Group discount
   var groupDiscount = 1;
@@ -790,23 +858,57 @@ function generateQuote() {
   else if (people >= 5) groupDiscount = 0.9;
 
   var tourCost = tourBasePrice * people * groupDiscount;
-  var hotelCost = hotelPricePerNight * tourDays;
+  // 3-star hotel cost is included in base price (Req 4)
+  var hotelCost = hotelStars === 3 ? 0 : hotelPricePerNight * tourDays;
   var vehicleCost = vehiclePricePerDay * tourDays;
-  var totalEstimate = Math.round(tourCost + hotelCost + vehicleCost);
+  var subtotal = Math.round(tourCost + hotelCost + vehicleCost);
+
+  // Early booking 20% discount (Req 1)
+  var earlyBooker = isEarlyBooker();
+  var savingsAmount = earlyBooker ? Math.round(subtotal * 0.20) : 0;
+  var totalEstimate = subtotal - savingsAmount;
+
+  // SUV capacity warning: max is 4 passengers, warn when group exceeds that (Req 5)
+  var suvWarning = (vehicleType === 'suv' && people > 4)
+    ? '<div class="suv-capacity-warning">⚠️ SUV fits up to 3–4 passengers. Consider upgrading to Jeep or Hiace for your group.</div>'
+    : '';
 
   var html = '<div class="quote-result">';
+  html += suvWarning;
+
+  if (earlyBooker) {
+    var hoursLeft = getHoursRemaining();
+    html += '<div class="early-discount-badge">🎉 20% Early Booking Discount Active' +
+            (hoursLeft > 0 ? ' – ' + hoursLeft + 'h remaining' : '') + '</div>';
+  }
+
   html += '<div class="quote-tour-name">' + escapeHTML(tourName) + '</div>';
   html += '<div class="quote-breakdown">';
   html += '<span>' + people + ' traveller' + (people !== 1 ? 's' : '') + '</span>';
   html += '<span>' + tourDays + ' days</span>';
-  html += '<span>' + hotelStars + '-Star Hotel</span>';
+  // Req 3: show only star category, no hotel name
+  if (hotelStars === 3) {
+    html += '<span>' + hotelStars + '-Star Hotel (included)</span>';
+  } else {
+    html += '<span>' + hotelStars + '-Star Hotel (+$' + hotelCost + ')</span>';
+  }
   html += '<span>' + escapeHTML(vehicleName) + '</span>';
   if (groupDiscount < 1) {
     html += '<span>Group discount: ' + Math.round((1 - groupDiscount) * 100) + '% off</span>';
   }
   html += '</div>';
-  html += '<div class="quote-total">Estimated Total: ~$' + totalEstimate.toLocaleString() + '</div>';
-  html += '<div class="quote-note">* Estimate includes tour, hotel & vehicle. Flights, permits & personal expenses extra. Final price confirmed by Jivan.</div>';
+
+  if (earlyBooker) {
+    html += '<div class="quote-total">';
+    html += '<span class="quote-original-price">~$' + subtotal.toLocaleString() + '</span> ';
+    html += '<span class="quote-discounted-price">~$' + totalEstimate.toLocaleString() + '</span>';
+    html += '<span class="discount-savings"> — save $' + savingsAmount.toLocaleString() + '!</span>';
+    html += '</div>';
+  } else {
+    html += '<div class="quote-total">Estimated Total: ~$' + totalEstimate.toLocaleString() + '</div>';
+  }
+
+  html += '<div class="quote-note">* Estimate includes tour, hotel &amp; vehicle. Flights, permits &amp; personal expenses extra. Final price confirmed by Jivan.</div>';
   html += '</div>';
 
   quoteEl.innerHTML = html;

@@ -852,8 +852,109 @@
 }
 
 /* ===========================================
-   Responsive Enhancements
+   Early Booking Discount Badge
    =========================================== */
+
+.early-discount-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #28a745, #20863a);
+  color: white;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.45rem 1.1rem;
+  border-radius: 20px;
+  margin-bottom: 0.85rem;
+  animation: pulse 2.5s infinite;
+  letter-spacing: 0.2px;
+}
+
+.quote-original-price {
+  text-decoration: line-through;
+  color: var(--stone, #5a6b7a);
+  font-size: 1.15rem;
+  font-weight: 400;
+}
+
+.quote-discounted-price {
+  color: #28a745;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.discount-savings {
+  color: #28a745;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.suv-capacity-warning {
+  background: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffc107;
+  border-radius: 6px;
+  padding: 0.5rem 0.85rem;
+  font-size: 0.88rem;
+  margin-bottom: 0.75rem;
+}
+
+/* ===========================================
+   Enhanced Itinerary Details (early bookers)
+   =========================================== */
+
+.itinerary-day--enhanced {
+  border-left-color: #28a745;
+}
+
+.itinerary-day-time {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #28a745;
+  margin-bottom: 0.3rem;
+  letter-spacing: 0.2px;
+}
+
+.itinerary-meal-detail {
+  font-size: 0.88rem;
+  color: var(--stone, #5a6b7a);
+  margin: 0.35rem 0 0.4rem;
+}
+
+.itinerary-meal-detail strong {
+  color: var(--deep, #0f2c3d);
+}
+
+/* ===========================================
+   Hotel Names Hidden in Custom Tour Selection
+   =========================================== */
+
+.hotel-section .hotel-example {
+  display: none;
+}
+
+/* Dark mode additions */
+[data-theme="dark"] .suv-capacity-warning {
+  background: #3a2e00;
+  color: #ffc107;
+  border-color: #ffc107;
+}
+
+[data-theme="dark"] .early-discount-badge {
+  background: linear-gradient(135deg, #1e7d35, #155724);
+}
+
+[data-theme="dark"] .itinerary-day--enhanced {
+  border-left-color: #28a745;
+}
+
+[data-theme="dark"] .itinerary-meal-detail {
+  color: #8ba5bb;
+}
+
+[data-theme="dark"] .itinerary-meal-detail strong {
+  color: #d8e6f0;
+}
+
+
 
 @media (max-width: 768px) {
   .hotel-grid {

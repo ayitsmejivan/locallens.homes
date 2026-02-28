@@ -3,13 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
+    <title>Contact Us - LocalLens Nepal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="pages.css">
+    <style>
+        .contact-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-content {
+            line-height: 1.8;
+            color: #333;
+        }
+        
+        .contact-info {
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background-color: #fff;
+            border-left: 4px solid #d4a574;
+            border-radius: 4px;
+        }
+        
+        .contact-info h3 {
+            color: #d4a574;
+            margin-top: 0;
+        }
+        
+        .contact-form {
+            margin-top: 2rem;
+            padding: 2rem;
+            background-color: #fff;
+            border-radius: 8px;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #d4a574;
+            box-shadow: 0 0 5px rgba(212, 165, 116, 0.3);
+        }
+        
+        .submit-btn {
+            background-color: #d4a574;
+            color: #fff;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            background-color: #b8935f;
+        }
+    </style>
 </head>
 <body>
-    <h1>Contact Us</h1>
-    <p>At LOCALLENS NEPAL, we are committed to providing the best service to our customers. If you have any questions or feedback, please reach out to us.</p>
+    <div class="contact-container">
+        <h1>Contact Us</h1>
+        
+        <div class="contact-content">
+            <p>Welcome to LocalLens Nepal! We are here to help you discover the hidden gems and authentic experiences our beautiful country has to offer. Whether you have questions about our tours, need travel recommendations, or want to share feedback about your experience with us, we'd love to hear from you.</p>
+            
+            <p>We understand that planning your travel to Nepal can be overwhelming, and we're here to make it simple and enjoyable. Our team is dedicated to providing you with personalized assistance and ensuring that your journey with us is unforgettable.</p>
+            
+            <div class="contact-info">
+                <h3>📍 Our Location</h3>
+                <p>We are based in the heart of Nepal, ready to guide you through some of the most spectacular destinations in the Himalayas and beyond.</p>
+            </div>
+            
+            <div class="contact-info">
+                <h3>📧 Email</h3>
+                <p>We respond to all inquiries within 24 hours. Feel free to reach out to us with any questions or special requests.</p>
+            </div>
+            
+            <div class="contact-info">
+                <h3>🕐 Operating Hours</h3>
+                <p>We are available throughout the week to assist you with tour bookings, itinerary customizations, and travel advice. We understand that our clients reach out at different times, so we work to accommodate your schedule.</p>
+            </div>
+            
+            <div class="contact-form">
+                <h2>Get in Touch</h2>
+                <p>Fill out the form below and we'll get back to you as soon as possible. We value your inquiry and look forward to helping you plan an amazing adventure.</p>
+                
+                <form id="contactForm" method="POST" action="#">
+                    <div class="form-group">
+                        <label for="name">Your Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Your Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject *</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+            
+            <p style="margin-top: 2rem; font-style: italic; color: #666;">We believe in building lasting relationships with our travelers. Your satisfaction and trust mean everything to us. Thank you for considering LocalLens Nepal for your next adventure!</p>
+        </div>
+    </div>
+    
     <footer>
-        <p>© 2026 LOCALLENS NEPAL</p>
+        <p>© 2026 LocalLens Nepal. All rights reserved. We are committed to providing authentic travel experiences.</p>
     </footer>
 </body>
 </html>

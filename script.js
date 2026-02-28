@@ -5,12 +5,31 @@ document.addEventListener('DOMContentLoaded', function () {
   initSmoothScroll();
   initFadeInAnimations();
   initLazyLoading();
+  initContactForm();
   initFormValidation();
   setActiveNavLink();
   initDarkMode();
   initTestimonialsCarousel();
   initTourFilters();
 });
+
+// ===========================================
+// Contact Form Setup
+// ===========================================
+
+function initContactForm() {
+  var form = document.getElementById('contact-form');
+  if (!form) return;
+
+  // Set form action via JavaScript to avoid exposing email in static HTML
+  form.action = 'https://formspree.io/f/jivaneklo@gmail.com';
+
+  // Set travel date minimum to today
+  var dateInput = document.getElementById('travel-date');
+  if (dateInput) {
+    dateInput.min = new Date().toISOString().split('T')[0];
+  }
+}
 
 // ===========================================
 // Hamburger Menu
@@ -190,9 +209,11 @@ function handleFormSubmit(e) {
   if (!allValid) return;
 
   // Show loading state
-  var originalText = submitBtn.textContent;
-  submitBtn.textContent = 'Sending…';
-  submitBtn.classList.add('btn-loading');
+  var originalText = submitBtn ? submitBtn.textContent : '';
+  if (submitBtn) {
+    submitBtn.textContent = 'Sending…';
+    submitBtn.classList.add('btn-loading');
+  }
 
   var formData = new FormData(form);
 
@@ -216,8 +237,10 @@ function handleFormSubmit(e) {
       setTimeout(function () { errorMsg.classList.remove('visible'); }, 6000);
     }
   }).finally(function () {
-    submitBtn.textContent = originalText;
-    submitBtn.classList.remove('btn-loading');
+    if (submitBtn) {
+      submitBtn.textContent = originalText;
+      submitBtn.classList.remove('btn-loading');
+    }
   });
 }
 

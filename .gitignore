@@ -30,3 +30,8 @@ npm-debug.log*
 # Temporary files
 tmp/
 temp/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo

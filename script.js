@@ -163,6 +163,7 @@ function validateField(field) {
   }
 
   field.classList.toggle('error', !valid);
+  field.setAttribute('aria-invalid', String(!valid));
   if (errorEl) {
     errorEl.textContent = message;
     errorEl.classList.toggle('visible', !valid);

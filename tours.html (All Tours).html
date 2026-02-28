@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Tours – LocalLens.Homes</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #1a2a3a; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        :root {
+            --deep: #0f2c3d;
+            --warm: #c4452b;
+            --sand: #f8f1e5;
+        }
+        
+        header { background: var(--deep); color: white; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; }
+        .logo { font-size: 1.8rem; font-weight: 700; }
+        .logo span { color: var(--warm); }
+        .nav-links a { color: white; text-decoration: none; margin-left: 2rem; }
+        .emergency { background: var(--warm); padding: 0.5rem 1rem; border-radius: 4px; }
+        
+        .tour-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+        
+        .tour-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-top: 4px solid var(--warm);
+        }
+        
+        .btn { display: inline-block; padding: 0.8rem 1.5rem; background: var(--warm); color: white; text-decoration: none; border-radius: 4px; margin-top: 1rem; }
+        
+        footer { background: var(--deep); color: white; padding: 2rem 0; text-align: center; margin-top: 4rem; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">LOCAL<span>LENS</span>.HOMES</div>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="tours.html">Tours</a>
+                    <a href="honey-hunting.html">Honey Hunting</a>
+                    <a href="about.html">My Story</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="emergency">📞 +977 9828768566</div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1 style="margin: 3rem 0 1rem;">My Tours</h1>
+        <p style="margin-bottom: 2rem;">Each route I've guided 50+ times. I know where things go wrong. I've built these tours around what I've learned.</p>
+        
+        <div class="tour-grid">
+            <div class="tour-card">
+                <h3>Cultural Kathmandu</h3>
+                <p>3-4 days • Easy • $600-900</p>
+                <p>I've guided this 100+ times. I know when crowds hit and where to hide.</p>
+                <a href="#" class="btn">View Tour</a>
+            </div>
+            
+            <div class="tour-card">
+                <h3>Pokhara & Nagarkot</h3>
+                <p>5-7 days • Easy-Moderate • $900-1500</p>
+                <p>I've handled flight cancellations here 20+ times. You won't even notice.</p>
+                <a href="#" class="btn">View Tour</a>
+            </div>
+            
+            <div class="tour-card">
+                <h3>Classic Nepal</h3>
+                <p>10-12 days • Easy-Moderate • $1500-2500</p>
+                <p>Kathmandu + Pokhara + Chitwan. The complete introduction.</p>
+                <a href="#" class="btn">View Tour</a>
+            </div>
+            
+            <div class="tour-card">
+                <h3>Poon Hill Trek</h3>
+                <p>7-9 days • Moderate • $800-1200</p>
+                <p>Your first Himalayan trek. I've done this 50+ times.</p>
+                <a href="#" class="btn">View Tour</a>
+            </div>
+            
+            <div class="tour-card" style="border-top-color: gold;">
+                <h3>🔥 Honey Hunting</h3>
+                <p>5-7 days • Moderate • $1200-2000</p>
+                <p><strong>ONLY 6 SPOTS PER YEAR.</strong> Most Nepalis never see this.</p>
+                <a href="honey-hunting.html" class="btn">View Tour</a>
+            </div>
+            
+            <div class="tour-card">
+                <h3>Muktinath Pilgrimage</h3>
+                <p>10-12 days • Moderate • $1200-1800</p>
+                <p>I'll get you there – even when flights cancel.</p>
+                <a href="#" class="btn">View Tour</a>
+            </div>
+            
+            <div class="tour-card">
+                <h3>Grand Tour Nepal</h3>
+                <p>14-16 days • Moderate • $2500-4000</p>
+                <p>Kathmandu + Pokhara + Muktinath + Lumbini + Chitwan.</p>
+                <a href="#" class="btn">View Tour</a>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin: 3rem 0;">
+            <a href="contact.html" style="background: var(--deep); padding: 1rem 3rem; color: white; text-decoration: none; border-radius: 4px;">Book a Consultation</a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>Jivan Parajuli • 📞 +977 9828768566 • 📧 jivaneklo@gmail.com</p>
+        </div>
+    </footer>
+</body>
+</html>

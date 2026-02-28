@@ -1,6 +1,6 @@
 /* LocalLens.Homes – Enhancement JavaScript
-   Itinerary Modals, Hotel/Vehicle Selection, Tour Customizer
-   =========================================================== */
+   Itinerary Modals, Hotel/Vehicle Selection, Tour Customizer, Contact Form
+   ========================================================================= */
 
 document.addEventListener('DOMContentLoaded', function () {
   initTourItineraryModals();
@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
   initTourCustomizer();
   syncSelectorsWithCustomizer();
   setMinDate();
+  initContactForm();
 });
 
 // ===========================================
@@ -873,4 +874,120 @@ function setMinDate() {
     var dd = String(today.getDate()).padStart(2, '0');
     dateInput.setAttribute('min', yyyy + '-' + mm + '-' + dd);
   }
+}
+
+// ===========================================
+// Contact Form – Flask AJAX Handler
+// ===========================================
+
+function initContactForm() {
+  var form = document.querySelector('form[data-flask-form]');
+  if (!form) return;
+
+  form.querySelectorAll('input, textarea').forEach(function (field) {
+    field.addEventListener('blur', function () { validateContactField(field); });
+    field.addEventListener('input', function () {
+      if (field.classList.contains('error')) validateContactField(field);
+    });
+  });
+
+  form.addEventListener('submit', handleContactFormSubmit);
+}
+
+function validateContactField(field) {
+  var errorEl = field.parentElement.querySelector('.field-error');
+  var valid = true;
+  var message = '';
+
+  if (field.required && !field.value.trim()) {
+    valid = false;
+    message = 'This field is required.';
+  } else if (field.type === 'email' && field.value.trim()) {
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value)) {
+      valid = false;
+      message = 'Please enter a valid email address.';
+    }
+  }
+
+  field.classList.toggle('error', !valid);
+  if (errorEl) {
+    errorEl.textContent = message;
+    errorEl.classList.toggle('visible', !valid);
+  }
+
+  return valid;
+}
+
+function handleContactFormSubmit(e) {
+  e.preventDefault();
+
+  var form = e.target;
+  var submitBtn = form.querySelector('[type="submit"]');
+  var successMsg = form.querySelector('.form-success');
+  var errorMsg = form.querySelector('.form-error-msg');
+
+  // Client-side validation
+  var allValid = true;
+  form.querySelectorAll('input[required], textarea[required]').forEach(function (field) {
+    if (!validateContactField(field)) allValid = false;
+  });
+  if (!allValid) return;
+
+  // Loading state
+  var originalText = submitBtn.textContent;
+  submitBtn.textContent = 'Sending\u2026';
+  submitBtn.disabled = true;
+
+  var payload = {
+    name: (form.querySelector('[name="name"]') || {}).value || '',
+    email: (form.querySelector('[name="email"]') || {}).value || '',
+    phone: (form.querySelector('[name="phone"]') || {}).value || '',
+    message: (form.querySelector('[name="message"]') || {}).value || '',
+    travel_date: (form.querySelector('[name="travel_date"]') || {}).value || '',
+    trip: (form.querySelector('[name="trip"]') || {}).value || ''
+  };
+
+  fetch(form.action, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify(payload)
+  }).then(function (response) {
+    return response.json().then(function (data) {
+      return { ok: response.ok, data: data };
+    });
+  }).then(function (result) {
+    if (result.ok) {
+      form.reset();
+      if (successMsg) {
+        successMsg.classList.add('visible');
+        setTimeout(function () { successMsg.classList.remove('visible'); }, 6000);
+      }
+    } else {
+      // Show field-specific errors returned by Flask
+      var fieldErrors = (result.data && result.data.errors) || {};
+      Object.keys(fieldErrors).forEach(function (fieldName) {
+        var field = form.querySelector('[name="' + fieldName + '"]');
+        if (field) {
+          var errEl = field.parentElement.querySelector('.field-error');
+          field.classList.add('error');
+          if (errEl) {
+            errEl.textContent = fieldErrors[fieldName];
+            errEl.classList.add('visible');
+          }
+        }
+      });
+      if (!Object.keys(fieldErrors).length && errorMsg) {
+        errorMsg.classList.add('visible');
+        setTimeout(function () { errorMsg.classList.remove('visible'); }, 6000);
+      }
+    }
+  }).catch(function () {
+    if (errorMsg) {
+      errorMsg.classList.add('visible');
+      setTimeout(function () { errorMsg.classList.remove('visible'); }, 6000);
+    }
+  }).finally(function () {
+    submitBtn.textContent = originalText;
+    submitBtn.disabled = false;
+  });
 }

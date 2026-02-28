@@ -461,6 +461,30 @@
   margin: 3rem 0;
 }
 
+.crisis-story-title {
+  color: var(--warm);
+  margin-bottom: 1rem;
+}
+
+.crisis-follow-up {
+  margin-top: 1rem;
+}
+
+.crisis-highlight {
+  font-weight: 600;
+}
+
+.about-section-title {
+  margin: 3rem 0 1rem;
+  color: var(--deep);
+}
+
+.about-closing-note {
+  text-align: center;
+  margin-top: 3rem;
+  font-size: 1.05rem;
+}
+
 /* ===========================================
    Contact Page
    =========================================== */

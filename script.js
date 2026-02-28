@@ -226,11 +226,11 @@ function handleFormSubmit(e) {
 // ===========================================
 
 function setActiveNavLink() {
-  var pathPart = window.location.pathname.split('/').pop();
-  var currentPage = (pathPart === '' || !pathPart) ? 'index.html' : pathPart;
+  var currentPath = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
   document.querySelectorAll('.nav-links a').forEach(function (link) {
     var href = link.getAttribute('href');
-    if (href === currentPage) {
+    var normalizedHref = href.replace(/\/$/, '') || '/';
+    if (normalizedHref === currentPath) {
       link.classList.add('active');
     }
   });
@@ -245,7 +245,6 @@ function initDarkMode() {
   if (!toggle) return;
 
   var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-  toggle.textContent = isDark ? '☀️' : '🌙';
   toggle.setAttribute('aria-pressed', String(isDark));
 
   toggle.addEventListener('click', function () {
@@ -253,12 +252,10 @@ function initDarkMode() {
     if (currentlyDark) {
       document.documentElement.removeAttribute('data-theme');
       localStorage.removeItem('darkMode');
-      toggle.textContent = '🌙';
       toggle.setAttribute('aria-pressed', 'false');
     } else {
       document.documentElement.setAttribute('data-theme', 'dark');
       localStorage.setItem('darkMode', 'enabled');
-      toggle.textContent = '☀️';
       toggle.setAttribute('aria-pressed', 'true');
     }
   });

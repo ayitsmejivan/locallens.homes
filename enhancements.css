@@ -234,6 +234,7 @@
   font-size: 1.4rem;
   margin-bottom: 0.75rem;
   letter-spacing: 2px;
+  color: #c8a600;
 }
 
 .hotel-card h3 {
@@ -348,8 +349,16 @@
 }
 
 .vehicle-icon {
-  font-size: 3rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
   margin-bottom: 0.75rem;
+  display: inline-block;
+  background: var(--deep, #0f2c3d);
+  color: white;
+  padding: 0.35rem 0.9rem;
+  border-radius: 4px;
   animation: none;
   transition: transform 0.3s ease;
 }

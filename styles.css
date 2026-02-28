@@ -384,6 +384,24 @@ footer a:hover {
   outline-offset: 2px;
 }
 
+/* CSS crescent moon icon for light mode */
+.dark-mode-toggle::after {
+  content: '';
+  display: block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  box-shadow: inset -4px 1px 0 0 white;
+}
+
+/* CSS filled circle (sun) icon for dark mode */
+[data-theme="dark"] .dark-mode-toggle::after {
+  background: white;
+  box-shadow: 0 0 0 2px #1a3a52, 0 0 0 4px white;
+  width: 10px;
+  height: 10px;
+}
+
 /* ===========================================
    WhatsApp Floating Action Button
    =========================================== */

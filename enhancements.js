@@ -257,7 +257,7 @@ var TOUR_DATA = {
   },
 
   'honey-hunting': {
-    name: '🔥 Honey Hunting Expedition',
+    name: 'Honey Hunting Expedition',
     duration: '5–7 days',
     difficulty: 'Moderate',
     price: '$1,200–2,000 per person',
@@ -575,9 +575,9 @@ function buildItineraryHTML(tour) {
 
   // Meta info bar
   html += '<div class="itinerary-meta">';
-  html += '<span>🕐 ' + tour.duration + '</span>';
-  html += '<span>🏃 ' + tour.difficulty + '</span>';
-  html += '<span>💰 ' + tour.price + '</span>';
+  html += '<span>' + tour.duration + '</span>';
+  html += '<span>' + tour.difficulty + '</span>';
+  html += '<span>' + tour.price + '</span>';
   html += '</div>';
 
   // Day-by-day
@@ -591,13 +591,13 @@ function buildItineraryHTML(tour) {
     html += '<div class="itinerary-day-desc">' + escapeHTML(day.description) + '</div>';
     html += '<div class="itinerary-day-pills">';
     day.meals.forEach(function (m) {
-      html += '<span class="itinerary-pill pill-meal">🍽️ ' + escapeHTML(m) + '</span>';
+      html += '<span class="itinerary-pill pill-meal">' + escapeHTML(m) + '</span>';
     });
     day.activities.forEach(function (a) {
-      html += '<span class="itinerary-pill pill-activity">📍 ' + escapeHTML(a) + '</span>';
+      html += '<span class="itinerary-pill pill-activity">' + escapeHTML(a) + '</span>';
     });
     day.notes.forEach(function (n) {
-      html += '<span class="itinerary-pill pill-note">💡 ' + escapeHTML(n) + '</span>';
+      html += '<span class="itinerary-pill pill-note">' + escapeHTML(n) + '</span>';
     });
     html += '</div>';
     html += '</div>';
@@ -605,10 +605,10 @@ function buildItineraryHTML(tour) {
 
   // Meeting point & notes
   html += '<div class="meeting-point-box">';
-  html += '<strong>📍 Meeting Point & Time</strong>';
+  html += '<strong>Meeting Point &amp; Time</strong>';
   html += '<br>' + escapeHTML(tour.meetingPoint);
   if (tour.specialNotes) {
-    html += '<br><em style="opacity:0.85;font-size:0.88rem;">📝 ' + escapeHTML(tour.specialNotes) + '</em>';
+    html += '<br><em style="opacity:0.85;font-size:0.88rem;">' + escapeHTML(tour.specialNotes) + '</em>';
   }
   html += '</div>';
 
@@ -766,7 +766,7 @@ function generateQuote() {
   var quoteEl = document.getElementById('customizer-quote');
 
   if (!tourSelect || !tourSelect.value) {
-    quoteEl.innerHTML = '<div class="quote-placeholder">👆 Please select a tour package first</div>';
+    quoteEl.innerHTML = '<div class="quote-placeholder">Select your tour package above to see an instant estimate</div>';
     return;
   }
 
@@ -797,12 +797,12 @@ function generateQuote() {
   var html = '<div class="quote-result">';
   html += '<div class="quote-tour-name">' + escapeHTML(tourName) + '</div>';
   html += '<div class="quote-breakdown">';
-  html += '<span>👥 ' + people + ' traveller' + (people !== 1 ? 's' : '') + '</span>';
-  html += '<span>📅 ' + tourDays + ' days</span>';
-  html += '<span>🏨 ' + hotelStars + '-Star Hotel</span>';
-  html += '<span>🚗 ' + escapeHTML(vehicleName) + '</span>';
+  html += '<span>' + people + ' traveller' + (people !== 1 ? 's' : '') + '</span>';
+  html += '<span>' + tourDays + ' days</span>';
+  html += '<span>' + hotelStars + '-Star Hotel</span>';
+  html += '<span>' + escapeHTML(vehicleName) + '</span>';
   if (groupDiscount < 1) {
-    html += '<span>🎉 Group discount: ' + Math.round((1 - groupDiscount) * 100) + '% off</span>';
+    html += '<span>Group discount: ' + Math.round((1 - groupDiscount) * 100) + '% off</span>';
   }
   html += '</div>';
   html += '<div class="quote-total">Estimated Total: ~$' + totalEstimate.toLocaleString() + '</div>';
